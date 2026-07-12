@@ -1,0 +1,6 @@
+{
+  "name": "ระบบจองห้องประชุม สพป.บึงกาฬ",
+  "description": "ระบบบันทึกและจองห้องประชุม สพป.บึงกาฬ สำหรับผู้ใช้และผู้ดูแลระบบ พร้อมระบบแจ้งเตือนและตรวจสอบเวลาว่าง",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
