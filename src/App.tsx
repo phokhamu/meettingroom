@@ -5,6 +5,7 @@ import CalendarView from "./components/CalendarView";
 import BookingForm from "./components/BookingForm";
 import AdminDashboard from "./components/AdminDashboard";
 import UserNotifications from "./components/UserNotifications";
+import { apiFetch } from "./utils/apiFallback";
 import { 
   Building2, CalendarCheck, Shield, Sparkles, LogIn, Lock, 
   HelpCircle, RefreshCw, Layers, CheckCircle2, ChevronRight, UserCog,
@@ -58,9 +59,9 @@ export default function App() {
     try {
       // Parallel fetches for speed and safety
       const [roomsRes, bookingsRes, statsRes] = await Promise.all([
-        fetch("/api/rooms"),
-        fetch("/api/bookings"),
-        fetch("/api/stats")
+        apiFetch("/api/rooms"),
+        apiFetch("/api/bookings"),
+        apiFetch("/api/stats")
       ]);
 
       if (!roomsRes.ok || !bookingsRes.ok || !statsRes.ok) {
@@ -87,7 +88,7 @@ export default function App() {
     const initApp = async () => {
       try {
         // Increment visitor count
-        await fetch("/api/stats/visit", { method: "POST" });
+        await apiFetch("/api/stats/visit", { method: "POST" });
       } catch (err) {
         console.warn("Could not register session visit on startup", err);
       }
@@ -124,7 +125,7 @@ export default function App() {
     if (!confirm("คุณต้องการล้างข้อมูลคำจองทั้งหมดและรีเซ็ตรายชื่อเป็น 5 ห้องเรียนเริ่มต้นหรือไม่?")) return;
     
     try {
-      const res = await fetch("/api/reset-db", { method: "POST" });
+      const res = await apiFetch("/api/reset-db", { method: "POST" });
       if (res.ok) {
         alert("รีเซ็ตระบบเป็นค่าเริ่มต้นสำเร็จแล้ว!");
         refreshAllData();

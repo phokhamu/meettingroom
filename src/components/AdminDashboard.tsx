@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Booking, Room } from "../types";
+import { apiFetch } from "../utils/apiFallback";
 import { 
   Users, Briefcase, Plus, Edit2, Trash2, Check, X, ShieldAlert, 
   Search, SlidersHorizontal, Calendar, Phone, Activity, Sparkles, 
@@ -98,7 +99,7 @@ export default function AdminDashboard({
         method = "PUT";
       }
 
-      const res = await fetch(url, {
+      const res = await apiFetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -119,7 +120,7 @@ export default function AdminDashboard({
     if (!confirm(`คุณต้องการลบห้องประชุม "${name}" ใช่หรือไม่?`)) return;
 
     try {
-      const res = await fetch(`/api/rooms/${id}`, { method: "DELETE" });
+      const res = await apiFetch(`/api/rooms/${id}`, { method: "DELETE" });
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error || "เกิดข้อผิดพลาดในการลบห้อง");
@@ -134,7 +135,7 @@ export default function AdminDashboard({
   const handleUpdateBookingStatus = async (id: string, status: "approved" | "rejected", note?: string) => {
     try {
       setErrorMsg("");
-      const res = await fetch(`/api/bookings/${id}/status`, {
+      const res = await apiFetch(`/api/bookings/${id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status, notes: note || "" })
@@ -157,7 +158,7 @@ export default function AdminDashboard({
 
     try {
       setErrorMsg("");
-      const res = await fetch(`/api/bookings/${id}`, { method: "DELETE" });
+      const res = await apiFetch(`/api/bookings/${id}`, { method: "DELETE" });
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error || "เกิดข้อผิดพลาด");

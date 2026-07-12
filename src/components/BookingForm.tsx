@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Room, Booking } from "../types";
 import { getAvailableStartTimes, getAvailableEndTimes } from "../utils/time";
+import { apiFetch } from "../utils/apiFallback";
 import { Calendar, Users, Briefcase, Phone, MessageSquare, Clock, ShieldAlert, Sparkles, CheckCircle } from "lucide-react";
 
 interface BookingFormProps {
@@ -49,7 +50,7 @@ export default function BookingForm({
     setEndTime("");
 
     // Fetch existing bookings for this specific room and date
-    fetch(`/api/bookings?date=${selectedDate}&roomName=${encodeURIComponent(selectedRoom.name)}`)
+    apiFetch(`/api/bookings?date=${selectedDate}&roomName=${encodeURIComponent(selectedRoom.name)}`)
       .then((res) => {
         if (!res.ok) throw new Error("โกรธแล้วนะ! ดึงข้อมูลการจองผิดพลาด");
         return res.json();
@@ -104,7 +105,7 @@ export default function BookingForm({
     setErrorMsg("");
 
     try {
-      const response = await fetch("/api/bookings", {
+      const response = await apiFetch("/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

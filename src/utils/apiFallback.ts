@@ -188,9 +188,6 @@ const computeLocalStats = () => {
   };
 };
 
-// Capture original fetch
-const originalFetch = window.fetch;
-
 // Custom mocked Response helper
 const mockResponse = (data: any, status = 200, statusText = "OK") => {
   return new Response(JSON.stringify(data), {
@@ -200,15 +197,15 @@ const mockResponse = (data: any, status = 200, statusText = "OK") => {
   });
 };
 
-// Intercept window.fetch
-window.fetch = async function (input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+// Export custom apiFetch to be used across the application
+export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
   const urlStr = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
 
   // Only intercept endpoints starting with /api/ if local fallback is triggered
   if (urlStr.includes("/api/")) {
     if (!isLocalFallback) {
       try {
-        const response = await originalFetch(input, init);
+        const response = await window.fetch(input, init);
         // If response is not ok (e.g. 404 from GitHub Pages static), trigger local mode and try again with local mode
         if (!response.ok && (response.status === 404 || response.headers.get("content-type")?.includes("text/html"))) {
           console.warn("Express backend not detected or returned 404. Switching dynamically to Local Storage Database Mode!");
@@ -430,5 +427,5 @@ window.fetch = async function (input: RequestInfo | URL, init?: RequestInit): Pr
     }
   }
 
-  return originalFetch(input, init);
+  return window.fetch(input, init);
 };
