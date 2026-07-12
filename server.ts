@@ -49,7 +49,7 @@ const DEFAULT_ROOMS: Room[] = [
     id: "room-2",
     name: "ห้องประชุมไชยบุรี",
     capacity: 100,
-    equipment: ["โปรเจคเตอร์", "ไมโครโฟนไร้สาย", "เคร่องเสียงรอบทิศทาง"],
+    equipment: ["กระดานอัจฉริยะ Smart Board", "ไมโครโฟนตั้งโต๊ะ", "ระบบประชุมวิดีโอออนไลน์"],
     color: "from-violet-600 to-purple-800",
     status: "active"
   },
@@ -57,7 +57,7 @@ const DEFAULT_ROOMS: Room[] = [
     id: "room-3",
     name: "ห้องประชุมลานรวมใจ",
     capacity: 100,
-    equipment: ["เวทีการแสดงและโพเดียม", "จอภาพ LED ขนาดใหญ่", "ระบบเสียงสเตอริโอรอบทิศทาง"],
+    equipment: ["เวทีการแสดงและโพเดียม", "จอภาพ LED ขนาดใหญ่", "ระบบเสียงสเตอริโอรอบทิศทาง", "ระบบถ่ายทอดสด"],
     color: "from-purple-700 to-indigo-900",
     status: "active"
   },
@@ -65,7 +65,7 @@ const DEFAULT_ROOMS: Room[] = [
     id: "room-4",
     name: "ห้องประชุมหินสามวาฬ",
     capacity: 35,
-    equipment: ["ระบบประชุมทางไกล", "โปรเจคเตอร์", "กล้องหมุนรอบทิศทาง 360°", "ทีวี 4K"],
+    equipment: ["กระดานไวท์บอร์ดกระจก", "Apple TV 4K", "กล้องหมุนรอบทิศทาง 360°", "จุดบริการเครื่องดื่มชา/กาแฟ"],
     color: "from-fuchsia-600 to-purple-700",
     status: "active"
   }
