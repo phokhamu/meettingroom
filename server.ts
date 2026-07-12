@@ -47,8 +47,8 @@ const DEFAULT_ROOMS: Room[] = [
   },
   {
     id: "room-2",
-    name: "ห้องไชยบุรี",
-    capacity: 25,
+    name: "ห้องประชุมไชยบุรี",
+    capacity: 100,
     equipment: ["กระดานอัจฉริยะ Smart Board", "ไมโครโฟนตั้งโต๊ะ", "ระบบประชุมวิดีโอออนไลน์"],
     color: "from-violet-600 to-purple-800",
     status: "active"
@@ -67,14 +67,6 @@ const DEFAULT_ROOMS: Room[] = [
     capacity: 35,
     equipment: ["กระดานไวท์บอร์ดกระจก", "Apple TV 4K", "กล้องหมุนรอบทิศทาง 360°", "จุดบริการเครื่องดื่มชา/กาแฟ"],
     color: "from-fuchsia-600 to-purple-700",
-    status: "active"
-  },
-  {
-    id: "room-5",
-    name: "ห้องประชุมภูสิงห์บึงกาฬ",
-    capacity: 15,
-    equipment: ["จอทีวีความคมชัดสูง", "ไมโครโฟนรอบทิศทาง Jabra", "บอร์ดแก้วบันทึกความคิดสร้างสรรค์"],
-    color: "from-indigo-500 to-purple-500",
     status: "active"
   }
 ];

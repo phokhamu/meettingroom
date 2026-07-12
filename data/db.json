@@ -15,8 +15,8 @@
     },
     {
       "id": "room-2",
-      "name": "ห้องไชยบุรี",
-      "capacity": 25,
+      "name": "ห้องประชุมไชยบุรี",
+      "capacity": 100,
       "equipment": [
         "กระดานอัจฉริยะ Smart Board",
         "ไมโครโฟนตั้งโต๊ะ",
@@ -50,20 +50,8 @@
       ],
       "color": "from-fuchsia-600 to-purple-700",
       "status": "active"
-    },
-    {
-      "id": "room-5",
-      "name": "ห้องประชุมภูสิงห์บึงกาฬ",
-      "capacity": 15,
-      "equipment": [
-        "จอทีวีความคมชัดสูง",
-        "ไมโครโฟนรอบทิศทาง Jabra",
-        "บอร์ดแก้วบันทึกความคิดสร้างสรรค์"
-      ],
-      "color": "from-indigo-500 to-purple-500",
-      "status": "active"
     }
   ],
   "bookings": [],
-  "views": 1250
+  "views": 1256
 }
