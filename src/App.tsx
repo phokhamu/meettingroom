@@ -5,7 +5,7 @@ import CalendarView from "./components/CalendarView";
 import BookingForm from "./components/BookingForm";
 import AdminDashboard from "./components/AdminDashboard";
 import UserNotifications from "./components/UserNotifications";
-import { apiFetch } from "./utils/apiFallback";
+import { apiFetch, DEFAULT_ROOMS } from "./utils/apiFallback";
 import { 
   Building2, CalendarCheck, Shield, Sparkles, LogIn, Lock, 
   HelpCircle, RefreshCw, Layers, CheckCircle2, ChevronRight, UserCog,
@@ -28,7 +28,7 @@ export interface SystemStats {
 
 export default function App() {
   // Shared database state
-  const [rooms, setRooms] = useState<Room[]>([]);
+  const [rooms, setRooms] = useState<Room[]>(DEFAULT_ROOMS);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [systemStats, setSystemStats] = useState<SystemStats | null>(null);
   const [showStatsCard, setShowStatsCard] = useState<boolean>(true);
