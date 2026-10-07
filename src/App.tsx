@@ -9,7 +9,7 @@ import { apiFetch, DEFAULT_ROOMS } from "./utils/apiFallback";
 import { 
   Building2, CalendarCheck, Shield, Sparkles, LogIn, Lock, 
   HelpCircle, RefreshCw, Layers, CheckCircle2, ChevronRight, UserCog,
-  Eye, BarChart3, TrendingUp, Clock
+  Eye, BarChart3, TrendingUp, Clock, RotateCcw
 } from "lucide-react";
 
 export interface SystemStats {
@@ -105,11 +105,11 @@ export default function App() {
   // Handle simple admin authentication gating
   const handleAdminAuth = (e: React.FormEvent) => {
     e.preventDefault();
-    if (adminPasscode === "1234") {
+    if (adminPasscode === "lrx\"[7'dk>") {
       setIsAdminAuthenticated(true);
       setAuthError("");
     } else {
-      setAuthError("รหัสผ่านไม่ถูกต้อง! (คำแนะนำการทดสอบ: รหัสผ่านคือ 1234)");
+      setAuthError("รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง");
     }
   };
 
@@ -170,14 +170,6 @@ export default function App() {
                 >
                   <RefreshCw className={`w-4 h-4 ${isDataLoading ? "animate-spin" : ""}`} />
                   <span>รีเฟรชข้อมูล</span>
-                </button>
-
-                <button
-                  onClick={handleResetDB}
-                  className="px-3.5 py-2.5 bg-white/5 hover:bg-purple-500/20 text-white hover:text-white rounded-xl text-sm font-medium cursor-pointer transition backdrop-blur-md border border-white/5"
-                  title="รีเซ็ตฐานข้อมูลเริ่มต้น"
-                >
-                  รีเซ็ต DB เริ่มต้น
                 </button>
               </div>
               <span className="text-xs text-white/80 font-mono">
@@ -485,7 +477,7 @@ export default function App() {
                     )}
                     <div>
                       <label className="block text-sm font-semibold text-slate-500 mb-1.5 uppercase tracking-wide">
-                        ป้อนรหัสผ่านแอดมิน (กรุณาป้อนรหัส: 1234 เพื่อทดสอบ)
+                        ป้อนรหัสผ่านแอดมิน
                       </label>
                       <input
                         type="password"
@@ -519,12 +511,23 @@ export default function App() {
                       </div>
                     </div>
 
-                    <button
-                      onClick={handleAdminLogout}
-                      className="px-5 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-sm font-bold rounded-2xl cursor-pointer transition border border-rose-100/50"
-                    >
-                      ออกจากผู้ดูแลระบบ
-                    </button>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        onClick={handleResetDB}
+                        className="px-4 py-2.5 bg-amber-50 hover:bg-amber-100 active:scale-95 text-amber-700 hover:text-amber-800 text-sm font-bold rounded-2xl cursor-pointer transition border border-amber-200/60 flex items-center gap-1.5 shadow-sm"
+                        title="รีเซ็ตฐานข้อมูลเป็นค่าเริ่มต้น (เฉพาะผู้ดูแลระบบ)"
+                      >
+                        <RotateCcw className="w-4 h-4 text-amber-600" />
+                        <span>รีเซ็ต DB เริ่มต้น</span>
+                      </button>
+
+                      <button
+                        onClick={handleAdminLogout}
+                        className="px-5 py-2.5 bg-rose-50 hover:bg-rose-100 active:scale-95 text-rose-700 text-sm font-bold rounded-2xl cursor-pointer transition border border-rose-100/50 shadow-sm"
+                      >
+                        ออกจากผู้ดูแลระบบ
+                      </button>
+                    </div>
                   </div>
 
                   <AdminDashboard
